@@ -8,6 +8,7 @@ use App\Entity\EtatIntervention;
 use App\Entity\FicheExploitation; 
 use App\Entity\FicheInterventionTech; 
 use App\Entity\FicheStock; 
+use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -52,5 +53,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Fiche Exploitation', 'fa fa-file-text-o', FicheExploitation::class);
         yield MenuItem::linkToCrud('Fiche Intervention Technique', 'fas fa-wrench', FicheInterventionTech::class);
         yield MenuItem::linkToCrud('Fiche de Stock', 'fas fa-database', FicheStock::class);
+
+        yield MenuItem::subMenu('Comptes', 'fa fa-user')
+        ->setSubItems([
+            MenuItem::linkToCrud('Tous les comptes', 'fas fa-user-friends', User::class),
+            MenuItem::linkToCrud('Ajouter', 'fa fa-plus', User::class)
+        ]);    
     }
 }
