@@ -3,25 +3,38 @@
 {% block title %}Product Details{% endblock %}
 
 {% block body %}
-    <button onclick="printDiv('print-area')">Print this page</button>
-    <div id="print-area">
-    <h1> Details</h1>
-    <p>ID: {{ intervention.id }}</p>
-    <p>Date: {{ intervention.date|date('Y-m-d H:i:s') }}</p>
-    <p>Solde Comptable: {{ intervention.solde_comptable }}</p>
-    <p>Solde Physique: {{ intervention.solde_physique }}</p>
-    <p>Difference: {{ intervention.difference }}</p>
-    <p>Justification:{{ intervention.justification|raw }}</p> 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center">Details</h1>
+                </div>
+                <div class="card-body">
+                <div id="print-area">
+                    <p>Date: {{ intervention.date|date('Y-m-d H:i:s') }}</p>
+                    <p>Solde Comptable: {{ intervention.solde_comptable }}</p>
+                    <p>Solde Physique: {{ intervention.solde_physique }}</p>
+                    <p>Difference: {{ intervention.difference }}</p>
+                    <p>Justification:{{ intervention.justification|raw }}</p> 
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" onclick="printDiv('print-area')">Print this page</button>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}
+
 {% block javascripts %}
-    <script>
-        function printDiv(divName) {
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-        }
-    </script>
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+</script>
 {% endblock %}

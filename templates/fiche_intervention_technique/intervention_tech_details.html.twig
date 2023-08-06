@@ -3,14 +3,28 @@
 {% block title %}Fiche d'intervention technique Details{% endblock %}
 
 {% block body %}
-    <button onclick="printDiv('print-area')">Print this page</button>
-        <div id="print-area">
-        <h1> Details</h1>
-        <p>Code Erreur: {{ ficheInterventionTech.code_erreur }}</p>
-        <p>Module: {{ ficheInterventionTech.module }}</p>
-        <p>Description Anomalie: {{ ficheInterventionTech.description_anomalie |raw }}</p>
-        <p>Etat Intervention: {{ ficheInterventionTech.etat_intervention }}</p>
-        <p>Agent Technique: {{ ficheInterventionTech.agent_technique }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-center">Details</h1>
+                    </div>
+                    <div class="card-body">
+                    <div id="print-area">
+                        <h1> Details</h1>
+                        <p>Code Erreur: {{ ficheInterventionTech.code_erreur }}</p>
+                        <p>Module: {{ ficheInterventionTech.module }}</p>
+                        <p>Description Anomalie: {{ ficheInterventionTech.description_anomalie |raw }}</p>
+                        <p>Etat Intervention: {{ ficheInterventionTech.etat_intervention }}</p>
+                        <p>Agent Technique: {{ ficheInterventionTech.agent_technique }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" onclick="printDiv('print-area')">Print this page</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% block javascripts %}

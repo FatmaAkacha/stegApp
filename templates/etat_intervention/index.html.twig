@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <h1>Etat Intervention </h1>
+    <h1>Etat Intervention</h1>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
@@ -17,7 +17,9 @@
                 {% for intervention in interventions %}
                 <tr>
                     <td>{{ intervention.date|date('Y-m-d H:i:s') }}</td>
-                    <td><a class="btn btn-primary "href="{{ path('app_etat_intervention_details', {'id': intervention.id}) }}">Voir details</a></td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('app_etat_intervention_details', {'id': intervention.id}) }}">Voir détails</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
