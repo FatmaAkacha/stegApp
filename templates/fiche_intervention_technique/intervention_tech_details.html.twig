@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche d'intervention technique Details{% endblock %}
+
+{% block body %}
+    <button onclick="printDiv('print-area')">Print this page</button>
+        <div id="print-area">
+        <h1> Details</h1>
+        <p>Code Erreur: {{ ficheInterventionTech.code_erreur }}</p>
+        <p>Module: {{ ficheInterventionTech.module }}</p>
+        <p>Description Anomalie: {{ ficheInterventionTech.description_anomalie |raw }}</p>
+        <p>Etat Intervention: {{ ficheInterventionTech.etat_intervention }}</p>
+        <p>Agent Technique: {{ ficheInterventionTech.agent_technique }}</p>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+{% endblock %}
+

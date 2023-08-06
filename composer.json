@@ -4,7 +4,6 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "symfony/security-core": "^5.0",
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
@@ -33,6 +32,7 @@
         "symfony/property-info": "6.3.*",
         "symfony/runtime": "6.3.*",
         "symfony/security-bundle": "6.3.*",
+        "symfony/security-core": "^5.0 || ^6.0",
         "symfony/serializer": "6.3.*",
         "symfony/string": "6.3.*",
         "symfony/translation": "6.3.*",
@@ -96,7 +96,7 @@
         "symfony/browser-kit": "6.3.*",
         "symfony/css-selector": "6.3.*",
         "symfony/debug-bundle": "6.3.*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.50",
         "symfony/phpunit-bridge": "^6.3",
         "symfony/stopwatch": "6.3.*",
         "symfony/web-profiler-bundle": "6.3.*"

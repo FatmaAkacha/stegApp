@@ -18,16 +18,16 @@ class FicheStock
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
-    private ?int $quantite_entree = null;
+    public ?int $quantite_entree = null;
 
     #[ORM\Column]
-    private ?int $num_bon_entree = null;
+    public ?int $num_bon_entree = null;
 
     #[ORM\Column]
-    private ?int $quantite_sortie = null;
+    public ?int $quantite_sortie = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $machine_sortie = null;
+    public ?string $machine_sortie = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
     private ?string $solde = null;
@@ -48,54 +48,6 @@ class FicheStock
     public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    public function getQuantiteEntree(): ?int
-    {
-        return $this->quantite_entree;
-    }
-
-    public function setQuantiteEntree(int $quantite_entree): static
-    {
-        $this->quantite_entree = $quantite_entree;
-
-        return $this;
-    }
-
-    public function getNumBonEntree(): ?int
-    {
-        return $this->num_bon_entree;
-    }
-
-    public function setNumBonEntree(int $num_bon_entree): static
-    {
-        $this->num_bon_entree = $num_bon_entree;
-
-        return $this;
-    }
-
-    public function getQuantiteSortie(): ?int
-    {
-        return $this->quantite_sortie;
-    }
-
-    public function setQuantiteSortie(int $quantite_sortie): static
-    {
-        $this->quantite_sortie = $quantite_sortie;
-
-        return $this;
-    }
-
-    public function getMachineSortie(): ?string
-    {
-        return $this->machine_sortie;
-    }
-
-    public function setMachineSortie(string $machine_sortie): static
-    {
-        $this->machine_sortie = $machine_sortie;
 
         return $this;
     }

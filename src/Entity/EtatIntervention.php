@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use App\Repository\EtatInterventionRepository;
 use Doctrine\DBAL\Types\Types;
+use App\Repository\EtatInterventionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EtatInterventionRepository::class)]
@@ -17,11 +17,11 @@ class EtatIntervention
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\Column]
-    private ?int $solde_comptable = null;
+    #[ORM\Column(type: Types::INTEGER)]
+    public ?int $solde_comptable = null;
 
-    #[ORM\Column]
-    private ?int $solde_physique = null;
+    #[ORM\Column(type: Types::INTEGER)]
+    public ?int $solde_physique = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
     private ?string $difference = null;
@@ -42,47 +42,39 @@ class EtatIntervention
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setDate(\DateTimeInterface $date): void
     {
         $this->date = $date;
-
-        return $this;
     }
 
-    public function getSoldeComptable(): ?int
-    {
-        return $this->solde_comptable;
-    }
+    // public function getSoldeComptable(): ?int
+    // {
+    //     return $this->solde_comptable;
+    // }
 
-    public function setSoldeComptable(int $solde_comptable): static
-    {
-        $this->solde_comptable = $solde_comptable;
+    // public function setSoldeComptable(int $solde_comptable): void
+    // {
+    //     $this->solde_comptable = $solde_comptable;
+    // }
 
-        return $this;
-    }
+    // public function getSoldePhysique(): ?int
+    // {
+    //     return $this->solde_physique;
+    // }
 
-    public function getSoldePhysique(): ?int
-    {
-        return $this->solde_physique;
-    }
-
-    public function setSoldePhysique(int $solde_physique): static
-    {
-        $this->solde_physique = $solde_physique;
-
-        return $this;
-    }
+    // public function setSoldePhysique(int $solde_physique): void
+    // {
+    //     $this->solde_physique = $solde_physique;
+    // }
 
     public function getDifference(): ?string
     {
         return $this->difference;
     }
 
-    public function setDifference(string $difference): static
+    public function setDifference(string $difference): void
     {
         $this->difference = $difference;
-
-        return $this;
     }
 
     public function getJustification(): ?string
@@ -90,11 +82,9 @@ class EtatIntervention
         return $this->justification;
     }
 
-    public function setJustification(?string $justification): static
+    public function setJustification(?string $justification): void
     {
         $this->justification = $justification;
-
-        return $this;
     }
 
     public function getArticleEtat(): ?Article
@@ -102,10 +92,8 @@ class EtatIntervention
         return $this->article_etat;
     }
 
-    public function setArticleEtat(?Article $article_etat): static
+    public function setArticleEtat(?Article $article_etat): void
     {
         $this->article_etat = $article_etat;
-
-        return $this;
     }
 }
