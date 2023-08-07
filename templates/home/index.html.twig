@@ -1,17 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Acceuil{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
+<br>
 <main class="container">
     <div class="row">
         <div class="col-md-8">
-            <h3 class="pb-4 mb-4 fst-italic border-bottom">Articles récents</h3>
+            <h3 class="pb-4 mb-4 fst-italic border-bottom">Articles</h3>
         </div>
-        <div class="col-md-4">
-            <div class="position-sticky" style="top: 2rem;">
-                {% include 'widget/about.html.twig' %}
-                {% include 'widget/categories.html.twig' %}
+    </div>
+    <div class="row">
+        {% for article in articles %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ article.nom }}</h5>
+                        <p class="card-text">Quantité: {{ article.quantite }}</p>
+                        <p class="card-text">Catégorie: {{ article.categories.nom }}</p>
+                        <!-- Display any other relevant information here -->
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+        <div>
+            <h3 class="pb-4 mb-4 fst-italic border-bottom"> À-propos </h3>
+            <div class="row">
+                <div class="col-6">
+                    <p>
+                        La société STEG, DISTRICT SFAX VILLE est spécialisée en Electricité Distribution
+                        et Organismes Nationaux. Elle est basée à Sfax.
+                    </p>
+                    <p>
+                        <img style="width: 5%; height: 2%;" src="{{ asset('assets/adress.png') }}" alt="Example Image">
+                        Rue Imam Boukhari 3000 Sfax, Sfax
+                    </p>
+                    <p> 
+                        <img style="width: 5%; height: 2%;" src="{{ asset('assets/phonepng.png') }}" alt="Example Image">
+                        74 226 788 / 74 226 500
+                    </p>
+                    <p>
+                        <img style="width: 5%; height: 2%;" src="{{ asset('assets/262221.png') }}" alt="Example Image">
+                        74 299 262
+                    </p>
+                </div>
+                <div class="col-4">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.9594426527397!2d10.755702275326188!3d34.73141667290876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13002d2970097323%3A0x79b67347ac9237d3!2sSTEG%20Sfax%20Ville!5e0!3m2!1sfr!2stn!4v1691434293867!5m2!1sfr!2stn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      
+                </div>
             </div>
         </div>
     </div>

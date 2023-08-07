@@ -15,15 +15,17 @@
             </div>
         {% endif %}
 
-        <h1>Se connecter</h1>
+        <br>
+        <img style="width: 70%; height: 50%;" src="{{ asset('assets/STegg.jpg') }}" alt="Example Image">
+        <br> <br>
         <label for="inputUsername">Nom d'Utilisateur</label>
         <input type="text" value="{{ last_username }}" name="_username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-
+<br>
         <label for="inputPassword">Mot de passe</label>
         <input type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
+<br>
         <button class="btn btn-primary mt-2" type="submit">Se connecter</button>
     </form>
 </div>

@@ -21,7 +21,15 @@ class UserCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('username'),
-            CollectionField::new('roles'),
+            CollectionField::new('roles')
+            ->formatValue(function($value, $entity) {
+                // Convert roles to human-readable format
+                if ($value === 2) {
+                    return 'role_admin';
+                } else {
+                    return 'role_user';
+                }
+            }),
         ];
     }
 }
