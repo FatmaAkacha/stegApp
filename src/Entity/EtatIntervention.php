@@ -96,4 +96,9 @@ class EtatIntervention
     {
         $this->article_etat = $article_etat;
     }
+    public function calculateDifference(): ?int
+{
+    return $this->solde_comptable - $this->solde_physique;
+}
+
 }

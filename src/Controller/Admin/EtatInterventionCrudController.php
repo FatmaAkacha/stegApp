@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class EtatInterventionCrudController extends AbstractCrudController
 {
@@ -23,7 +24,10 @@ class EtatInterventionCrudController extends AbstractCrudController
             DateField::new('date'),
             IntegerField::new('solde_comptable'),
             IntegerField::new('solde_physique'),
-            TextEditorField::new('difference'),
+            TextField::new('difference')
+                ->formatValue(function ($value, $entity) {
+                    return $entity->calculateDifference();
+                }),
             TextEditorField::new('justification'),
             AssociationField::new('article_etat'),
         ];

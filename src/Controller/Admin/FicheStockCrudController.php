@@ -25,7 +25,10 @@ class FicheStockCrudController extends AbstractCrudController
             IntegerField::new('num_bon_entree'),
             IntegerField::new('quantite_sortie'),
             TextField::new('machine_sortie'),
-            TextField::new('solde'),
+            TextField::new('solde')
+                ->formatValue(function ($value, $entity) {
+                    return $entity->calculateSolde();
+                }),
             AssociationField::new('article_stock'),
         ];
     }

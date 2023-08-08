@@ -75,4 +75,9 @@ class FicheStock
 
         return $this;
     }
+
+    public function calculateSolde(): ?int
+    {
+        return $this->quantite_entree - $this->quantite_sortie;
+    }
 }
