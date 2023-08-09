@@ -4,32 +4,31 @@
 
 {% block body %}
     <div class="container">
-              <div class="row">
-        <div class="col-md-6 offset-md-3 mt-4">
-            <div class="card" id="print-area">
-                <div class="card-header">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mt-4">
+                <div class="card" id="print-area">
+                    <div class="card-header">
                     
-                    <img style="width:15%; height: 8%;" src="{{ asset('assets/image.png') }}" alt="Example Image">
-                    <h1 class="text-center">Détails</h1>
-                </div>
-                <div class="card-body">
-                <div style="margin-left:40%;">
-                        <p>Code Erreur: {{ ficheInterventionTech.code_erreur }}</p>
-                        <p>Module: {{ ficheInterventionTech.module }}</p>
-                        <p>Description Anomalie: {{ ficheInterventionTech.description_anomalie |raw }}</p>
-                        <p>Etat Intervention: {{ ficheInterventionTech.etat_intervention }}</p>
-                        <p>Agent Technique: {{ ficheInterventionTech.agent_technique }}</p>
-                    </div></div>
+                        <img style="width:15%; height: 8%;" src="{{ asset('assets/image.png') }}" alt="Example Image">
+                        <h1 class="text-center">Détails</h1>
                     </div>
-        </div>
-        <div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary" onclick="printDiv('print-area')">Print this page</button>
-                    </div>
-                </div>
+                    <div class="card-body">
+                        <div style="margin-left:40%;">
+                            <p>Code Erreur: {{ ficheInterventionTech.code_erreur }}</p>
+                            <p>Module: {{ ficheInterventionTech.module }}</p>
+                            <p>Description Anomalie: {{ ficheInterventionTech.description_anomalie |raw }}</p>
+                            <p>Etat Intervention: {{ ficheInterventionTech.etat_intervention }}</p>
+                            <p>Agent Technique: {{ ficheInterventionTech.agent_technique }}</p>
+                        </div>
             </div>
         </div>
+        <div>
+            <button class="btn btn-primary" onclick="printDiv('print-area')">Print this page</button>
+        </div>
     </div>
+</div>
+                   
+           
 {% endblock %}
 {% block javascripts %}
     <script>
