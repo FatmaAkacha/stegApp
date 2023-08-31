@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -16,10 +17,11 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $isAdmin = in_array('ROLE_ADMIN', $this->getUser()->getRoles());
+
+        $fields = [
             IdField::new('id')->hideOnForm(),
             TextField::new('username'),
             TextField::new('password')->hideOnIndex(),
@@ -32,12 +34,25 @@ class UserCrudController extends AbstractCrudController
                     return 'role_user';
                 }
             }),
-
         ];
-        if (Crud::PAGE_NEW === $pageName) {
-            $fields[] = TextField::new('plainPassword', 'Password')
-                ->setFormType(PasswordType::class)
-                ->onlyOnForms();
+
+        if ($pageName === 'new') {
+            $fields[] = ChoiceField::new('roles', 'User Roles')
+                ->setLabel('User Roles')
+                ->setChoices([
+                    'Admin' => 'ROLE_ADMIN',
+                    'User' => 'ROLE_USER',
+                ])
+                ->allowMultipleChoices(true)
+                ->renderExpanded(true)
+                ->renderAsBadges()
+                ->formatValue(function ($value) use ($isAdmin) {
+                    // If the current user is not an admin, filter out 'Admin' role
+                    if (!$isAdmin && in_array('ROLE_ADMIN', $value)) {
+                        return array_diff($value, ['ROLE_ADMIN']);
+                    }
+                    return $value;
+                });
         }
 
         return $fields;

@@ -46,8 +46,8 @@
                     <div style="margin-left:65%;"> 
                    <ul class="navbar-nav">
                     {% endif %}
+    <ul class="navbar-nav ml-auto">
     {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-       
         <li class="nav-item">
             <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
         </li>
@@ -64,24 +64,34 @@
 </ul>
 
 
-                </ul>
-                </div>
-                </div>
-            </div>
-            </nav>
-        {% if is_granted('ROLE_USER') %}
-        {% block body %}{% endblock %}
-        {% else %}
-      <section class="bg-light" style="margin-bottom: 15%; margin-top: 10%;">
-    <div class="container mt-5 ">
-        <div class="alert alert-danger text-center">
-            <h3>You are not logged in!</h3>
-            <p>Please <a href="{{ path('app_login') }}">log in</a> to access this page.</p>
+</div>
+</div>
+</div>
+</nav>
+
+{% if is_granted('ROLE_USER') %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% block body %}{% endblock %}
         </div>
     </div>
+</div>
+{% else %}
+<section class="bg-light" style="margin-bottom: 15%; margin-top: 10%;">
+    <div class="container mt-5">
+    <center>
+     <img style="width: 30%; height: 20%;" src="{{ asset('assets/STegg.jpg') }}" alt="Example Image">
+    </center>
+    <br>
+        <div class="alert alert-danger text-center">
+            <h3>Vous n'êtes pas connecté !</h3>
+            <p>Veuillez <a href="{{ path('app_login') }}">vous connecter</a> pour accéder à L'application Gestion de Stock.</p>
+        </div>
+       
+    </div>
 </section>
-
-      {% endif %}
+{% endif %}
 
 
 
